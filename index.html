@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Lead-Time & Margin Engine | Kohinoor Group</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .kohinoor-red { color: #E31E24; }
+        .bg-kohinoor { background-color: #E31E24; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased font-sans">
+
+    <!-- Navigation Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="w-2.5 h-10 bg-kohinoor rounded"></div>
+                <div>
+                    <h1 class="text-xl font-black text-slate-900 tracking-tight">KOHINOOR GROUP</h1>
+                    <p class="text-xs font-bold text-red-600 tracking-wider">PLANEDGE CONSULTANTS • LEAD-TIME & MARGIN ENGINE</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">
+                    <span class="w-2 h-2 mr-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
+                    M365 Pipeline Live (Y:\ Drive)
+                </span>
+                <span class="text-xs text-slate-500 font-medium">Lead Architect: Akash Thite</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-8 space-y-8">
+
+        <!-- KPI Summary Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
+            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-red-600">
+                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider">Annual Projected ROI</div>
+                <div class="text-2xl font-black text-slate-900 mt-1">₹2.5 Cr – ₹5.0 Cr</div>
+                <div class="text-xs text-emerald-600 font-semibold mt-1">0.5%–1.0% Bulk Margin Capture</div>
+            </div>
+
+            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-blue-600">
+                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider">Buyer Capacity Reclaimed</div>
+                <div class="text-2xl font-black text-slate-900 mt-1">8,640 Hrs/yr</div>
+                <div class="text-xs text-blue-600 font-semibold mt-1">₹43.2 Lakhs Admin Value</div>
+            </div>
+
+            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-emerald-600">
+                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider">Overbilling Prevented</div>
+                <div class="text-2xl font-black text-slate-900 mt-1">₹8.65 Lakhs</div>
+                <div class="text-xs text-emerald-600 font-semibold mt-1">Automated 3-Way Match</div>
+            </div>
+
+            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm border-t-4 border-t-amber-500">
+                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider">Out-of-Pocket Tool Cost</div>
+                <div class="text-2xl font-black text-slate-900 mt-1">₹0.00</div>
+                <div class="text-xs text-amber-600 font-semibold mt-1">100% In-House M365 + Python</div>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                <h3 class="text-sm font-bold text-slate-900 mb-1">Dual Lead-Time Disaggregation (Days)</h3>
+                <p class="text-xs text-slate-500 mb-4">Internal Dispatch Lag vs Vendor Transit Lag</p>
+                <div class="h-64">
+                    <canvas id="leadTimeChart"></canvas>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                <h3 class="text-sm font-bold text-slate-900 mb-1">Statistical Margin Bounds vs Baseline (%)</h3>
+                <p class="text-xs text-slate-500 mb-4">Dynamic Moving Average Price Bounds (±2σ)</p>
+                <div class="h-64">
+                    <canvas id="marginChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Live Ingestion Table -->
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+            <div class="px-6 py-4 border-b border-slate-200 bg-slate-50/50 flex justify-between items-center">
+                <div>
+                    <h3 class="text-sm font-bold text-slate-900">Active PO Governance & Bottleneck Attribution</h3>
+                    <p class="text-xs text-slate-500">Live reconciliation between ERP PO, M365 Dispatch & Gate GRN</p>
+                </div>
+                <span class="text-xs font-semibold px-2.5 py-1 bg-slate-200 text-slate-700 rounded">5 Live Records</span>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs">
+                    <thead class="bg-slate-50 text-slate-500 uppercase tracking-wider font-semibold border-b border-slate-200">
+                        <tr>
+                            <th class="px-6 py-3">PO Number</th>
+                            <th class="px-6 py-3">Vendor</th>
+                            <th class="px-6 py-3">Material Category</th>
+                            <th class="px-6 py-3">Internal Lag</th>
+                            <th class="px-6 py-3">Vendor Transit</th>
+                            <th class="px-6 py-3">Total Lead Time</th>
+                            <th class="px-6 py-3">Bottleneck Attribution</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200 text-slate-700">
+                        <tr class="hover:bg-slate-50/80">
+                            <td class="px-6 py-3.5 font-bold text-slate-900">PO-2026-9041</td>
+                            <td class="px-6 py-3.5">Tata Tiscon</td>
+                            <td class="px-6 py-3.5">TMT Steel Fe550D</td>
+                            <td class="px-6 py-3.5 text-blue-600 font-semibold">1.0 Day</td>
+                            <td class="px-6 py-3.5 text-emerald-600 font-semibold">6.0 Days</td>
+                            <td class="px-6 py-3.5 font-bold">7.0 Days</td>
+                            <td class="px-6 py-3.5"><span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-medium">On Schedule</span></td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/80">
+                            <td class="px-6 py-3.5 font-bold text-slate-900">PO-2026-9042</td>
+                            <td class="px-6 py-3.5">UltraTech Cement</td>
+                            <td class="px-6 py-3.5">Ready-Mix Concrete M30</td>
+                            <td class="px-6 py-3.5 text-red-600 font-semibold">3.0 Days</td>
+                            <td class="px-6 py-3.5 text-emerald-600 font-semibold">2.0 Days</td>
+                            <td class="px-6 py-3.5 font-bold">5.0 Days</td>
+                            <td class="px-6 py-3.5"><span class="px-2 py-0.5 rounded bg-red-100 text-red-800 font-medium">Internal Approval Delay</span></td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/80">
+                            <td class="px-6 py-3.5 font-bold text-slate-900">PO-2026-9043</td>
+                            <td class="px-6 py-3.5">Supreme Pipes</td>
+                            <td class="px-6 py-3.5">CPVC Plumbing Fittings</td>
+                            <td class="px-6 py-3.5 text-blue-600 font-semibold">1.0 Day</td>
+                            <td class="px-6 py-3.5 text-amber-600 font-semibold">11.0 Days</td>
+                            <td class="px-6 py-3.5 font-bold">12.0 Days</td>
+                            <td class="px-6 py-3.5"><span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-medium">Quantity Shortage at Gate</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // Lead Time Chart
+        new Chart(document.getElementById('leadTimeChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Tata Tiscon', 'UltraTech', 'Supreme Pipes', 'Schneider', 'Asian Paints'],
+                datasets: [
+                    { label: 'Internal Lag (Days)', data: [1, 3, 1, 2, 1], backgroundColor: '#2563EB' },
+                    { label: 'Vendor Transit (Days)', data: [6, 2, 11, 6, 5], backgroundColor: '#E31E24' }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: { x: { stacked: true }, y: { stacked: true } }
+            }
+        });
+
+        // Margin Chart
+        new Chart(document.getElementById('marginChart'), {
+            type: 'bar',
+            data: {
+                labels: ['TMT Steel', 'RMC M30', 'CPVC Pipes', 'DB Panels', 'Exterior Paint'],
+                datasets: [{
+                    label: 'Price Variance vs Baseline (%)',
+                    data: [-1.74, 1.05, -6.25, 4.17, -3.03],
+                    backgroundColor: ['#059669', '#E31E24', '#059669', '#E31E24', '#059669']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    </script>
+</body>
+</html>
