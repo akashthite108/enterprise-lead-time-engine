@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M365 Zero-Trust IT Security Simulator | Kohinoor Group</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .kohinoor-red { color: #E31E24; }
+        .bg-kohinoor { background-color: #E31E24; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 antialiased font-sans min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-slate-800/80 border-b border-slate-700 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="w-2.5 h-9 bg-kohinoor rounded"></div>
+                <div>
+                    <h1 class="text-lg font-black text-white tracking-tight">KOHINOOR GROUP IT GOVERNANCE</h1>
+                    <p class="text-xs font-bold text-red-400 tracking-wider">M365 ZERO-TRUST GRAPH API VERIFICATION SUITE</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-950 text-emerald-400 border border-emerald-800">
+                    <span class="w-2 h-2 mr-1.5 bg-emerald-400 rounded-full animate-pulse"></span>
+                    OAuth 2.0 Token Active (Read-Only)
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-8 space-y-8">
+
+        <!-- Executive Security Badges -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+                <div class="text-xs text-slate-400 font-semibold uppercase">Auth Protocol</div>
+                <div class="text-sm font-bold text-white mt-1">Azure Entra ID App Token</div>
+                <div class="text-[11px] text-emerald-400 mt-1">Client Credentials (No Passwords)</div>
+            </div>
+            <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+                <div class="text-xs text-slate-400 font-semibold uppercase">API Permission</div>
+                <div class="text-sm font-bold text-white mt-1">Strictly Mail.Read (Only)</div>
+                <div class="text-[11px] text-emerald-400 mt-1">Zero Write / Send / Delete Capability</div>
+            </div>
+            <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+                <div class="text-xs text-slate-400 font-semibold uppercase">Payload Scope</div>
+                <div class="text-sm font-bold text-white mt-1">$select=subject,sentDateTime</div>
+                <div class="text-[11px] text-amber-400 mt-1">Zero Email Body / Attachments Read</div>
+            </div>
+            <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+                <div class="text-xs text-slate-400 font-semibold uppercase">Data Storage</div>
+                <div class="text-sm font-bold text-white mt-1">Local Network (Y:\ Drive)</div>
+                <div class="text-[11px] text-blue-400 mt-1">100% In-House • Zero Cloud Egress</div>
+            </div>
+        </div>
+
+        <!-- Interactive Extraction Simulation Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+            <!-- Left: Live Outlook SentItems Scanner -->
+            <div class="bg-slate-800 rounded-xl border border-slate-700 p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="flex items-center space-x-2">
+                            <i class="fa-solid fa-envelope text-blue-400 text-lg"></i>
+                            <h3 class="text-sm font-bold text-white">Buyer Mailbox SentItems Stream</h3>
+                        </div>
+                        <span class="text-xs text-slate-400 font-mono">filter: subject contains 'PO-'</span>
+                    </div>
+
+                    <div class="space-y-3" id="email-stream">
+                        <div class="p-3 rounded-lg bg-slate-900 border border-slate-700 transition" id="mail-1">
+                            <div class="flex justify-between text-xs text-slate-400">
+                                <span>To: ultratech@sales.com</span>
+                                <span>03-Aug-2026 10:14 AM</span>
+                            </div>
+                            <div class="text-sm font-semibold text-white mt-1">PO-2026-9041 - TMT Steel Fe550D Dispatch Order</div>
+                            <div class="text-xs text-slate-500 mt-1">[Body Content Locked by Security Policy]</div>
+                        </div>
+
+                        <div class="p-3 rounded-lg bg-slate-900/40 border border-slate-800 opacity-50" id="mail-2">
+                            <div class="flex justify-between text-xs text-slate-400">
+                                <span>To: team@kohinoorpune.com</span>
+                                <span>03-Aug-2026 09:30 AM</span>
+                            </div>
+                            <div class="text-sm font-semibold text-slate-400 mt-1">Internal Site Coordination Meeting</div>
+                            <div class="text-xs text-red-400 mt-1">Ignored by Graph API (Non-PO Subject)</div>
+                        </div>
+
+                        <div class="p-3 rounded-lg bg-slate-900 border border-slate-700 transition" id="mail-3">
+                            <div class="flex justify-between text-xs text-slate-400">
+                                <span>To: tatasteel@orders.com</span>
+                                <span>04-Aug-2026 02:45 PM</span>
+                            </div>
+                            <div class="text-sm font-semibold text-white mt-1">PO-2026-9042 - Ready-Mix Concrete Order Release</div>
+                            <div class="text-xs text-slate-500 mt-1">[Body Content Locked by Security Policy]</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-slate-700 flex justify-between items-center">
+                    <button onclick="runSimulation()" class="px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-lg transition flex items-center space-x-2">
+                        <i class="fa-solid fa-play"></i>
+                        <span>Trigger Live Extraction Simulation</span>
+                    </button>
+                    <span id="scan-status" class="text-xs font-mono text-slate-400">Status: Standby</span>
+                </div>
+            </div>
+
+            <!-- Right: Graph API Payload & Local Storage -->
+            <div class="bg-slate-800 rounded-xl border border-slate-700 p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="flex items-center space-x-2">
+                            <i class="fa-solid fa-shield-halved text-emerald-400 text-lg"></i>
+                            <h3 class="text-sm font-bold text-white">Extracted Metadata Payload (JSON)</h3>
+                        </div>
+                        <span class="text-xs text-emerald-400 font-mono">Destination: Y:\Drive</span>
+                    </div>
+
+                    <pre id="json-output" class="bg-slate-950 p-4 rounded-lg border border-slate-800 text-xs font-mono text-emerald-400 h-64 overflow-y-auto leading-relaxed">
+{
+  "system_status": "Awaiting extraction trigger...",
+  "security_audit": "Strictly Read-Only (Mail.Read)",
+  "content_inspected": "Zero email body or attachment data egressed",
+  "storage_destination": "Local corporate path: Y:\\Drive\\procurement_analytics.db"
+}
+                    </pre>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-slate-700 text-xs text-slate-400 flex items-center justify-between">
+                    <span>Audit Record: <strong class="text-slate-200">ISO 27001 & SOC 2 Compliant</strong></span>
+                    <span class="text-emerald-400 font-semibold">100% On-Premise Storage</span>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+        function runSimulation() {
+            const status = document.getElementById('scan-status');
+            const jsonOut = document.getElementById('json-output');
+            const mail1 = document.getElementById('mail-1');
+            const mail3 = document.getElementById('mail-3');
+
+            status.innerHTML = '<span class="text-amber-400 animate-pulse"><i class="fa-solid fa-spinner fa-spin mr-1"></i> Querying Graph API...</span>';
+
+            setTimeout(() => {
+                mail1.classList.add('border-emerald-500', 'bg-emerald-950/30');
+                mail3.classList.add('border-emerald-500', 'bg-emerald-950/30');
+
+                jsonOut.innerText = JSON.stringify({
+                    "timestamp": new Date().toISOString(),
+                    "oauth_scope": "https://graph.microsoft.com/Mail.Read",
+                    "extracted_records": [
+                        {
+                            "po_number": "PO-2026-9041",
+                            "vendor_target": "ultratech@sales.com",
+                            "sent_datetime": "2026-08-03T10:14:00Z",
+                            "internal_lag_days": 1.1,
+                            "body_inspected": false
+                        },
+                        {
+                            "po_number": "PO-2026-9042",
+                            "vendor_target": "tatasteel@orders.com",
+                            "sent_datetime": "2026-08-04T14:45:00Z",
+                            "internal_lag_days": 3.0,
+                            "body_inspected": false
+                        }
+                    ],
+                    "security_audit_log": {
+                        "zero_body_egress": "VERIFIED",
+                        "database_path": "Y:\\Drive\\lead_time_engine.db",
+                        "egress_to_third_party": "BLOCKED / NONE"
+                    }
+                }, null, 2);
+
+                status.innerHTML = '<span class="text-emerald-400 font-bold"><i class="fa-solid fa-check mr-1"></i> Extraction & Storage Complete</span>';
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
