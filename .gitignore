@@ -1,0 +1,12 @@
+# Azure and IT credentials
+config/config.ini
+
+# Raw corporate company data / ERP dumps
+data/raw/*.csv
+data/raw/*.xlsx
+
+# Processed databases and caches
+data/processed/*.db
+__pycache__/
+*.pyc
+.streamlit/
